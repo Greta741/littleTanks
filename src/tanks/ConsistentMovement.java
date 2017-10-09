@@ -4,12 +4,12 @@
 
 package tanks;
 
-public class ConsistentMovement extends MovementAlgorithmStrategy
+public class ConsistentMovement implements IMovementAlgorithm
 {
-	public void Move( )
-	{
-		
-	}
-	
+    @Override
+    public void Move()
+    {
+        System.out.println("Moves consistently");
+    }
 	
 }

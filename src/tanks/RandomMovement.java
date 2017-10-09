@@ -4,12 +4,11 @@
 
 package tanks;
 
-public class RandomMovement extends MovementAlgorithmStrategy
+public class RandomMovement implements IMovementAlgorithm
 {
-	public void Move( )
-	{
-		
-	}
-	
-	
+    @Override
+    public void Move()
+    {
+        System.out.println("Moves randomly");
+    }	
 }

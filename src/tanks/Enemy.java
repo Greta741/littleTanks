@@ -6,10 +6,10 @@ package tanks;
 
 public class Enemy extends Tank
 {
-	private MovementAlgorithmStrategy movement;
-	
-	public void setMovement( String movement )
-	{
-		
-	}
+    private IMovementAlgorithm movement;
+    
+    public Enemy(IMovementAlgorithm movement)
+    {
+        this.movement = movement;
+    }
 }
