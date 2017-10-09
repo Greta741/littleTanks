@@ -10,6 +10,7 @@ public class Enemy extends Tank
     
     public Enemy(IMovementAlgorithm movement)
     {
+        System.out.println("Enemy tank");
         this.movement = movement;
     }
 }

@@ -6,10 +6,15 @@ package tanks;
 
 public class Player extends Tank
 {
-	public void Move( )
-	{
-		
-	}
+    public Player()
+    {
+        System.out.println("Player tank");
+    }
+    
+    public void Move( )
+    {
+
+    }
 	
 	
 }
