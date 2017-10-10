@@ -16,14 +16,18 @@ public class Game
 
 	private TankCommander tankCommander;
         
-        private TankFactory tankFactory;
+        private AbstractFactory tankFactory;
+        
+        private AbstractFactory weaponFactory;
         
         public Game() {
             gameMap = MapSingleton.getInstance();
             MapGraphics gameGraphics = new MapGraphics();
             gameMap.getGameMap().add(gameGraphics);
             
-            tankFactory = new TankFactory();
+            tankFactory = FactoryProducer.getFactory("TANK");
+            weaponFactory = FactoryProducer.getFactory("WEAPON");
+            
             tankCommander = new TankCommander();
             // --- For testing only
 //            ITank testTank1 = new Tank();
@@ -31,6 +35,9 @@ public class Game
             
             ITank player = tankFactory.createTank("PLAYER");    
             ITank enemy = tankFactory.createTank("ENEMY");
+            
+            Weapon laser = weaponFactory.createWeapon("LASER");
+            Weapon cannon = weaponFactory.createWeapon("CANNON");
             
             tankCommander.register(player);
             tankCommander.register(enemy);
