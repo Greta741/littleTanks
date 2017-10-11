@@ -18,10 +18,5 @@ public class TankFactory extends AbstractFactory
             default:
                 return null;
         }   
-    }	
-
-    @Override
-    public Weapon createWeapon(String weapon) {
-        return null;
     }
 }

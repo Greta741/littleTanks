@@ -13,4 +13,9 @@ public class Enemy extends Tank
         System.out.println("Enemy tank");
         this.movement = movement;
     }
+    
+    public IMovementAlgorithm getMovement()
+    {
+        return this.movement;
+    }
 }

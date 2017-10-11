@@ -35,6 +35,7 @@ public class Game
             
             ITank player = tankFactory.createTank("PLAYER");    
             ITank enemy = tankFactory.createTank("ENEMY");
+            ((Enemy)enemy).getMovement().Move();
             
             Weapon laser = weaponFactory.createWeapon("LASER");
             Weapon cannon = weaponFactory.createWeapon("CANNON");
