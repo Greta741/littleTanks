@@ -14,8 +14,8 @@ public class Enemy extends Tank
         this.movement = movement;
     }
     
-    public IMovementAlgorithm getMovement()
+    public void drive(char direction)
     {
-        return this.movement;
+        this.movement.Move(direction);
     }
 }

@@ -6,5 +6,5 @@ package tanks;
 
 public interface IMovementAlgorithm
 {	
-    public void Move();	
+    public void Move(char direction);	
 }

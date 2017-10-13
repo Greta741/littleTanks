@@ -57,9 +57,9 @@ public class Game
             
             /* Strategy */
             System.out.println("Movement strategy of randomMovementEnemyTank:");
-            ((Enemy)randomMovementEnemyTank).getMovement().Move();
+            ((Enemy)randomMovementEnemyTank).drive('S');
             System.out.println("Movement strategy of consistentMovementEnemyTank:");
-            ((Enemy)consistentMovementEnemyTank).getMovement().Move();
+            ((Enemy)consistentMovementEnemyTank).drive('W');
             System.out.println("");
             /* End of strategy */
             
