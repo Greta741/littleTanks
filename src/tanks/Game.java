@@ -8,11 +8,11 @@ public class Game
 {
 	private MapSingleton gameMap;
 
-	private Enemy randomMovementTank;
+	private ITank randomMovementEnemyTank;
 
-	private Enemy consistentMovementTank;
+	private ITank consistentMovementEnemyTank;
 
-	private Player playerTank;
+	private ITank playerTank;
 
 	private TankCommander tankCommander;
         
@@ -21,35 +21,47 @@ public class Game
         private AbstractFactory weaponFactory;
         
         public Game() {
-            gameMap = MapSingleton.getInstance();
-            MapGraphics gameGraphics = new MapGraphics();
-            gameMap.getGameMap().add(gameGraphics);
             
+            /* Singleton */
+            gameMap = MapSingleton.getInstance();
+            /* End of singleton */
+            
+            /* Abstract factory */
             tankFactory = FactoryProducer.getFactory("TANK");
             weaponFactory = FactoryProducer.getFactory("WEAPON");
+            /* End of abstract */
             
-            tankCommander = new TankCommander();
-            // --- For testing only
-//            ITank testTank1 = new Tank();
-//            ITank testTank2 = new Tank();
-            
-            ITank player = tankFactory.createTank("PLAYER");    
-            ITank enemy = tankFactory.createTank("ENEMY");
-            ((Enemy)enemy).getMovement().Move();
+            /* Factory */
+            System.out.println("Creation of tanks:");
+            playerTank = tankFactory.createTank("PLAYER", null);    
+            randomMovementEnemyTank = tankFactory.createTank("ENEMY", "RANDOM");
+            consistentMovementEnemyTank = tankFactory.createTank("ENEMY", "CONSISTENT");
+            System.out.println("");
             
             Weapon laser = weaponFactory.createWeapon("LASER");
             Weapon cannon = weaponFactory.createWeapon("CANNON");
+            /* End of factory */
             
-            tankCommander.register(player);
-            tankCommander.register(enemy);
+            /* Observer */
+            tankCommander = new TankCommander();
+            System.out.println("Notify all tanks:");
+            tankCommander.register(playerTank);
+            tankCommander.register(randomMovementEnemyTank);
+            tankCommander.register(consistentMovementEnemyTank);
             tankCommander.notifyTanks();
+            System.out.println("Notify only enemy tanks:");
+            tankCommander.unregister(playerTank);
+            tankCommander.notifyTanks();
+            System.out.println("");
+            /* End of observer */
             
-//            tankCommander.register(testTank1);
-//            tankCommander.register(testTank2);
-//            tankCommander.notifyTanks();
-//            tankCommander.unregister(testTank2);
-//            tankCommander.notifyTanks();
-            // ---
+            /* Strategy */
+            System.out.println("Movement strategy of randomMovementEnemyTank:");
+            ((Enemy)randomMovementEnemyTank).getMovement().Move();
+            System.out.println("Movement strategy of consistentMovementEnemyTank:");
+            ((Enemy)consistentMovementEnemyTank).getMovement().Move();
+            System.out.println("");
+            /* End of strategy */
             
         }
 

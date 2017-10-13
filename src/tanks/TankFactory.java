@@ -7,14 +7,20 @@ package tanks;
 public class TankFactory extends AbstractFactory
 {
     @Override
-    public Tank createTank( String tank )
+    public Tank createTank( String tank, String movement )
     {
         switch(tank)
         {
             case "PLAYER":
                 return new Player();
             case "ENEMY":
-                return new Enemy(new ConsistentMovement());
+                switch(movement)
+                {
+                    case "RANDOM":
+                        return new Enemy(new RandomMovement());
+                    case "CONSISTENT":
+                        return new Enemy(new ConsistentMovement());
+                }
             default:
                 return null;
         }   
