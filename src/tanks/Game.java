@@ -68,6 +68,26 @@ public class Game
             
             /* End of adapter */
             
+            /* Facade */
+            System.out.println("Map before decorating:");
+            Tile[][] map = gameMap.getInstance().getGameMap();
+            for (Tile[] map1 : map) {
+                for (Tile map11 : map1) {
+                    System.out.print(map11.getTile());
+                }
+                System.out.println("");
+            }
+            System.out.println("");
+            System.out.println("Map after decorating:");
+            for (Tile[] map1 : map) {
+                for (Tile map11 : map1) {
+                    map11.drawTile();
+                }
+                System.out.println("");
+            }
+            System.out.println("");
+            /* End of facade */
+            
             /* Decorator */
             System.out.println("Update shielded tank:");
             ITank shieldedTank = new ShieldedTankDecorator(playerTank);

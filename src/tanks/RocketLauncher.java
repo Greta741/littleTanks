@@ -10,6 +10,11 @@ public class RocketLauncher implements IBombShoot
 	{
 		
 	}
+
+    @Override
+    public void launchGrenade() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	
 }
