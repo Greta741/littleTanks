@@ -29,7 +29,7 @@ public class Game
             /* Abstract factory */
             tankFactory = FactoryProducer.getFactory("TANK");
             weaponFactory = FactoryProducer.getFactory("WEAPON");
-            /* End of abstract */
+            /* End of abstract factory */
             
             /* Factory */
             System.out.println("Creation of tanks:");
@@ -62,6 +62,18 @@ public class Game
             ((Enemy)consistentMovementEnemyTank).drive('W');
             System.out.println("");
             /* End of strategy */
+            
+            /* Adapter */
+            
+            
+            /* End of adapter */
+            
+            /* Decorator */
+            System.out.println("Update shielded tank:");
+            ITank shieldedTank = new ShieldedTankDecorator(playerTank);
+            shieldedTank.update();
+            System.out.println("");
+            /* End of decorator */
             
         }
 
