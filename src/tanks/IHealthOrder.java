@@ -4,9 +4,7 @@
 
 package tanks;
 
-public interface HealthOrder
+public interface IHealthOrder
 {
-	void execute( );
-	
-	
+    void execute( );
 }

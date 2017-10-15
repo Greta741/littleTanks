@@ -20,6 +20,8 @@ public class Game
         
         private AbstractFactory weaponFactory;
         
+        private HealthInvoker healthInvoker;
+        
         public Game() {
             
             /* Singleton */
@@ -95,6 +97,22 @@ public class Game
             System.out.println("");
             /* End of decorator */
             
+            /* Command */
+            System.out.println("Update tank health:");
+            
+            HealthInvoker healthInvoker = new HealthInvoker();
+            HealTank healTankOrder = new HealTank((Tank) playerTank, 10);
+            DamageTank damageTankOrder = new DamageTank((Tank) playerTank, 12);
+            
+            healthInvoker.takeOrder(damageTankOrder);
+            healthInvoker.takeOrder(healTankOrder);
+            healthInvoker.takeOrder(damageTankOrder);
+            
+            playerTank.update();
+            healthInvoker.placeOrders();
+            playerTank.update();
+            System.out.println("");
+            /* End of command */
         }
 
 	public void draw( )
