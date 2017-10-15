@@ -6,7 +6,5 @@ package tanks;
 
 public class Cannon extends Weapon
 {
-	private int armorPiercing;
-	
-	
+    private int armorPiercing = 1;
 }

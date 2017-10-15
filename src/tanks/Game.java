@@ -66,8 +66,12 @@ public class Game
             /* End of strategy */
             
             /* Adapter */
-            
-            
+            Weapon multitoolWeapon = new Weapon();
+            multitoolWeapon.shoot("laser");
+            multitoolWeapon.shoot("bullet");
+            multitoolWeapon.shoot("rocket");
+            multitoolWeapon.shoot("grenade");
+            System.out.println();
             /* End of adapter */
             
             /* Facade */
@@ -113,6 +117,13 @@ public class Game
             playerTank.update();
             System.out.println("");
             /* End of command */
+            
+            /* Prototype */
+            Enemy enemyPrototype = new Enemy(new ConsistentMovement());
+            Enemy enemyClone = (Enemy) enemyPrototype.clone();
+            enemyPrototype.update();
+            enemyClone.update();
+            /* End of prototype */
         }
 
 	public void draw( )

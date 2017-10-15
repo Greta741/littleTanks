@@ -6,7 +6,5 @@ package tanks;
 
 public interface IClone
 {
-	void clone( );
-	
-	
+    Object clone();	
 }
