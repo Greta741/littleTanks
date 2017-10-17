@@ -16,7 +16,7 @@ public class ShieldedTankDecorator extends TankDecorator
         updateShield();
     }
     
-    public void updateShield( )
+    private void updateShield( )
     {
         System.out.println("Update shield");
     }
