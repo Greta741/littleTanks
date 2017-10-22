@@ -16,10 +16,10 @@ public class TankFactory extends AbstractFactory
             case "ENEMY":
                 switch(movement)
                 {
-                    case "RANDOM":
-                        return new Enemy(new RandomMovement());
-                    case "CONSISTENT":
-                        return new Enemy(new ConsistentMovement());
+                    case "MAP":
+                        return new Enemy(new MoveAroundMapEdge());
+                    case "TOWARDSPLAYER":
+                        return new Enemy(new MoveTowardsPlayer());
                 }
             default:
                 return null;

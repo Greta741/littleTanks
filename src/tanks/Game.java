@@ -8,9 +8,9 @@ public class Game
 {
 	private MapSingleton gameMap;
 
-	private ITank randomMovementEnemyTank;
+	private ITank moveAroundMapEdgeEnemyTank;
 
-	private ITank consistentMovementEnemyTank;
+	private ITank moveTowardsPlayerEnemyTank;
 
 	private ITank playerTank;
 
@@ -34,10 +34,11 @@ public class Game
             /* End of abstract factory */
             
             /* Factory */
+            System.out.println("Factory design pattern");
             System.out.println("Creation of tanks:");
             playerTank = tankFactory.createTank("PLAYER", null);    
-            randomMovementEnemyTank = tankFactory.createTank("ENEMY", "RANDOM");
-            consistentMovementEnemyTank = tankFactory.createTank("ENEMY", "CONSISTENT");
+            moveAroundMapEdgeEnemyTank = tankFactory.createTank("ENEMY", "MAP");
+            moveTowardsPlayerEnemyTank = tankFactory.createTank("ENEMY", "TOWARDSPLAYER");
             System.out.println("");
             
             Weapon laser = weaponFactory.createWeapon("LASER");
@@ -45,11 +46,12 @@ public class Game
             /* End of factory */
             
             /* Observer */
+            System.out.println("Observer design pattern");
             tankCommander = new TankCommander();
             System.out.println("Notify all tanks:");
             tankCommander.register(playerTank);
-            tankCommander.register(randomMovementEnemyTank);
-            tankCommander.register(consistentMovementEnemyTank);
+            tankCommander.register(moveAroundMapEdgeEnemyTank);
+            tankCommander.register(moveTowardsPlayerEnemyTank);
             tankCommander.notifyTanks();
             System.out.println("Notify only enemy tanks:");
             tankCommander.unregister(playerTank);
@@ -58,14 +60,16 @@ public class Game
             /* End of observer */
             
             /* Strategy */
-            System.out.println("Movement strategy of randomMovementEnemyTank:");
-            ((Enemy)randomMovementEnemyTank).drive('S');
-            System.out.println("Movement strategy of consistentMovementEnemyTank:");
-            ((Enemy)consistentMovementEnemyTank).drive('W');
+            System.out.println("Strategy design pattern");
+            System.out.println("Movement strategy of moveAroundMapEdgeEnemyTank:");
+            ((Enemy)moveAroundMapEdgeEnemyTank).drive(gameMap.getGameMap());
+            System.out.println("Movement strategy of moveTowardsPlayerEnemyTank:");
+            ((Enemy)moveTowardsPlayerEnemyTank).drive(gameMap.getGameMap());
             System.out.println("");
             /* End of strategy */
             
             /* Adapter */
+            System.out.println("Adapter design pattern");
             Weapon multitoolWeapon = new Weapon();
             multitoolWeapon.shoot("laser");
             multitoolWeapon.shoot("bullet");
@@ -75,8 +79,9 @@ public class Game
             /* End of adapter */
             
             /* Facade */
+            System.out.println("Facade design patten");
             System.out.println("Map before decorating:");
-            Tile[][] map = gameMap.getInstance().getGameMap();
+            Tile[][] map = gameMap.getGameMap();
             for (Tile[] map1 : map) {
                 for (Tile map11 : map1) {
                     System.out.print(map11.getTile());
@@ -95,6 +100,7 @@ public class Game
             /* End of facade */
             
             /* Decorator */
+            System.out.println("Decorator design pattern");
             System.out.println("Update shielded tank:");
             ITank shieldedTank = new ShieldedTankDecorator(playerTank);
             shieldedTank.update();
@@ -102,9 +108,10 @@ public class Game
             /* End of decorator */
             
             /* Command */
+            System.out.println("Command design pattern");
             System.out.println("Update tank health:");
             
-            HealthInvoker healthInvoker = new HealthInvoker();
+            healthInvoker = new HealthInvoker();
             HealTank healTankOrder = new HealTank((Tank) playerTank, 10);
             DamageTank damageTankOrder = new DamageTank((Tank) playerTank, 12);
             
@@ -119,7 +126,8 @@ public class Game
             /* End of command */
             
             /* Prototype */
-            Enemy enemyPrototype = new Enemy(new ConsistentMovement());
+            System.out.println("Prototype design pattern");
+            Enemy enemyPrototype = new Enemy(new MoveTowardsPlayer());
             Enemy enemyClone = (Enemy) enemyPrototype.clone();
             enemyPrototype.update();
             enemyClone.update();

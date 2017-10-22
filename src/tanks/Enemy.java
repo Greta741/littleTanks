@@ -17,28 +17,28 @@ public class Enemy extends Tank implements IClone
         this.movement = movement;
     }
     
-    public void drive(char direction)
+    public void drive(Tile[][] map)
     {
-        this.movement.Move(direction);
+        this.movement.Move(map);
     }
     
     @Override
     public void update() {
-        if (movement instanceof RandomMovement) {
+        if (movement instanceof MoveAroundMapEdge) {
             super.update();
-            System.out.println("This is enemy tank with random movement");
+            System.out.println("This is enemy tank that moves around map edge");
         } else {
             super.update();
-            System.out.println("This is enemy tank with consistent movement");
+            System.out.println("This is enemy tank that moves towards player");
         }
     }
 
     @Override
     public Object clone() {
-        if (movement instanceof RandomMovement) {
-            return new Enemy(new RandomMovement());
+        if (movement instanceof MoveAroundMapEdge) {
+            return new Enemy(new MoveAroundMapEdge());
         } else {
-            return new Enemy(new ConsistentMovement());
+            return new Enemy(new MoveTowardsPlayer());
         }
     }
 }
