@@ -14,18 +14,19 @@ public class RealMine implements Mine
 	
 	public RealMine( int power )
 	{
-		
+		this.power = power;
+                calculateProperties();
 	}
 	
 	public void explode( )
 	{
-		
+            System.out.println("Mine is exploding. Radius: " + radius + " Damage: " + damage);
 	}
 	
 	private void calculateProperties( )
 	{
-		
+		radius = power * 3;
+                damage = power * 5;
 	}
-	
-	
+		
 }

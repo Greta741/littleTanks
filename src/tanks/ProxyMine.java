@@ -12,13 +12,16 @@ public class ProxyMine implements Mine
 	
 	public ProxyMine( int power )
 	{
-		
+            this.power = power;
 	}
 	
 	public void explode( )
 	{
-		
+            if (realMine == null) {
+                System.out.println("Create mine");
+                realMine = new RealMine(power);
+            }
+            realMine.explode();
 	}
-	
 	
 }

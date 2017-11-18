@@ -131,7 +131,27 @@ public class Game
             Enemy enemyClone = (Enemy) enemyPrototype.clone();
             enemyPrototype.update();
             enemyClone.update();
+            System.out.println("");
             /* End of prototype */
+            
+            /* Template method */
+            /* End of template method */
+            
+            /* Composite */
+            /* End of composite */
+            
+            /* Flyweight */
+            /* End of flyweight */
+            
+            /* State */
+            /* End of state */
+            
+            /* Proxy */
+            System.out.println("Proxy design pattern");
+            Mine mine = new ProxyMine(5);
+            mine.explode();
+            mine.explode();
+            /* End of proxy */
         }
 
 	public void draw( )
