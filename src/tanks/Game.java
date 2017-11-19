@@ -135,11 +135,48 @@ public class Game
             /* End of prototype */
             
             /* Template method */
+            System.out.println("Template design pattern");
+            Plane bomber = new Bomber("B25J");
+            bomber.fly();
+            System.out.println("");
+            Plane jet = new Jet("F-22");
+            jet.fly();
+            System.out.println("");
             /* End of template method */
             
             /* Composite */
-            /* End of composite */
             
+            /* End of composite */
+            System.out.println("Composite design pattern");
+            PlaneComposite boss = new PlaneComposite(new Jet("F-11: Boss"));
+            
+            PlaneComposite bossSoldier1 = new PlaneComposite(new Jet("F-10: BossSoldier_1"));
+            PlaneComposite bossSoldier2 = new PlaneComposite(new Jet("F-9: BossSoldier_2"));
+            
+            PlaneComposite soldier1Companion1 = new PlaneComposite(new Jet("F-8: Soldier_1_Companion_1"));
+            PlaneComposite soldier1Companion2 = new PlaneComposite(new Jet("F-7: Soldier_1_Companion_2"));
+            
+            PlaneComposite soldier2Companion1 = new PlaneComposite(new Jet("F-6: Soldier_2_Companion_1"));
+            PlaneComposite soldier2Companion2 = new PlaneComposite(new Jet("F-5: Soldier_2_Companion_2"));
+            
+            boss.add(bossSoldier1);
+            boss.add(bossSoldier2);
+            
+            bossSoldier1.add(soldier1Companion1);
+            bossSoldier1.add(soldier1Companion2);
+            
+            bossSoldier2.add(soldier2Companion1);
+            bossSoldier2.add(soldier2Companion2);
+            
+            boss.printModel();
+            for (PlaneComposite bossSoldier : boss.getPlanes())
+            {
+                bossSoldier.printModel();
+                for (PlaneComposite soldierCompanion : bossSoldier.getPlanes())
+                    soldierCompanion.printModel();
+            }
+            
+            System.out.println("");
             /* Flyweight */
             /* End of flyweight */
             
