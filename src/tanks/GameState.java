@@ -6,7 +6,5 @@ package tanks;
 
 public interface GameState
 {
-	void changeGameState( );
-	
-	
+    void changeGameState(Context c);
 }

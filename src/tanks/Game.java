@@ -185,6 +185,14 @@ public class Game
             /* End of flyweight */
             
             /* State */
+            System.out.println();
+            System.out.println("State design pattern");
+            Context gameContext = new Context();
+            gameContext.changeGameState();
+            gameContext.changeGameState();
+            gameContext.changeGameState();
+            gameContext.changeGameState();
+            System.out.println();
             /* End of state */
             
             /* Proxy */
