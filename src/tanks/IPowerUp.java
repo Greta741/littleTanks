@@ -6,7 +6,5 @@ package tanks;
 
 public interface IPowerUp
 {
-	void apply( );
-	
-	
+    void apply( );
 }

@@ -178,6 +178,10 @@ public class Game
             
             System.out.println("");
             /* Flyweight */
+            System.out.println("Flyweight design pattern");
+            PowerUpFactory powerupFactory = new PowerUpFactory();
+            PowerUp shieldPowerup = (PowerUp)powerupFactory.getPowerUp("SHIELD");
+            shieldPowerup.apply();
             /* End of flyweight */
             
             /* State */
