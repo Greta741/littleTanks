@@ -6,17 +6,16 @@ package tanks;
 
 public class PointExpression implements Expression
 {
-	private int point;
-	
-	public PointExpression( int point )
-	{
-		
-	}
-	
-	public int exucute( )
-	{
-		return 0;
-	}
-	
-	
+    private int point;
+
+    public PointExpression(int point)
+    {
+        this.point = point;
+    }	
+
+    @Override
+    public int execute()
+    {
+        return point;
+    }	
 }

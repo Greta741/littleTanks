@@ -176,7 +176,7 @@ public class Game
                     soldierCompanion.printModel();
             }
             
-            System.out.println("");
+            System.out.println();
             /* Flyweight */
             System.out.println("Flyweight design pattern");
             PowerUpFactory powerupFactory = new PowerUpFactory();
@@ -200,12 +200,32 @@ public class Game
             Mine mine = new ProxyMine(5);
             mine.explode();
             mine.explode();
+            System.out.println();
             /* End of proxy */
-        }
-
-	public void draw( )
-	{
-		
-	}
-		
+            
+            /* Iterpreter */
+            System.out.println("Interpreter design pattern");
+            Score sc = new Score();
+            System.out.println("Current score: " + sc.getState());
+            sc.setState(5);
+            System.out.println("Current score after 5: " + sc.getState());
+            sc.setState(-3);
+            System.out.println("Current score after -3: " + sc.getState());
+            System.out.println();
+            /* End of Interpreter */
+            
+            /* Null object */
+            System.out.println("Null object pattern");
+            AbstractLevel level1 = LevelFactory.getLevel("medium");
+            AbstractLevel level2 = LevelFactory.getLevel("insane");
+            AbstractLevel level3 = LevelFactory.getLevel("hard");
+            AbstractLevel level4 = LevelFactory.getLevel("hardcore");
+            System.out.println("Levels:");
+            System.out.println(level1.getName());
+            System.out.println(level2.getName());
+            System.out.println(level3.getName());
+            System.out.println(level4.getName());
+            System.out.println();
+            /* End of Null object */
+        }	
 }

@@ -6,7 +6,5 @@ package tanks;
 
 public interface Expression
 {
-	int execute( );
-	
-	
+    int execute();	
 }

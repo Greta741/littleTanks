@@ -6,27 +6,39 @@ package tanks;
 
 public class Score
 {
-	private int state;
-	
-	public void setState( int points )
-	{
-		
-	}
-	
-	public int getState( )
-	{
-		return 0;
-	}
-	
-	public Memento saveStateToMemento( )
-	{
-		return null;
-	}
-	
-	public void getStateFromMemento( Memento memento )
-	{
-		
-	}
-	
-	
+    private int state;
+    
+    public Score()
+    {
+        state = 0;
+    }
+
+    public void setState(int points)
+    {
+        Expression currentState = new PointExpression(state);
+        Expression newPoints = new PointExpression(Math.abs(points));
+        Expression action;
+                
+        if(points >= 0) {
+            action = new PlusExpression(currentState, newPoints);
+        } else {
+            action = new MinusExpression(currentState, newPoints);
+        }
+        state = action.execute();
+    }
+
+    public int getState()
+    {
+        return state;
+    }
+
+    public Memento saveStateToMemento()
+    {
+        return null;
+    }
+
+    public void getStateFromMemento(Memento memento)
+    {
+
+    }	
 }
