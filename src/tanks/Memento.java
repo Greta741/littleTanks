@@ -6,17 +6,15 @@ package tanks;
 
 public class Memento
 {
-	private int state;
-	
-	public Memento( int state )
-	{
-		
-	}
-	
-	public int getState( )
-	{
-		return 0;
-	}
-	
-	
+    private int state;
+
+    public Memento(int state)
+    {
+        this.state = state;
+    }
+
+    public int getState()
+    {
+            return state;
+    }
 }

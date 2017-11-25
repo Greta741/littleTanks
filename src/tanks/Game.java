@@ -234,5 +234,23 @@ public class Game
             tower.accept(new TowerPartStatusVisitor());
             System.out.println();
             /* End of visitor */
+            
+            /* Memento */
+            System.out.println("Memento design pattern");
+            Score score = new Score();
+            CareTaker careTaker = new CareTaker();
+            score.setState(60); // score is 60
+            score.setState(40); // score is 100
+            careTaker.add(score.saveStateToMemento()); // 1st saved state
+            score.setState(50); // score is 150
+            careTaker.add(score.saveStateToMemento()); // 2nd saved state
+            score.setState(20); // score is 170
+            System.out.println("Current score: " + score.getState());
+            score.getStateFromMemento(careTaker.get(0));
+            System.out.println("Current score: " + score.getState());
+            score.getStateFromMemento(careTaker.get(1));
+            System.out.println("Current score: " + score.getState());
+            System.out.println();
+            /* End of memento */
         }	
 }

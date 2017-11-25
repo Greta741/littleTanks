@@ -34,11 +34,11 @@ public class Score
 
     public Memento saveStateToMemento()
     {
-        return null;
+        return new Memento(state);
     }
 
     public void getStateFromMemento(Memento memento)
     {
-
+        state = memento.getState();
     }	
 }
