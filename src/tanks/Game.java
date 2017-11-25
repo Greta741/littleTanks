@@ -145,8 +145,6 @@ public class Game
             /* End of template method */
             
             /* Composite */
-            
-            /* End of composite */
             System.out.println("Composite design pattern");
             PlaneComposite boss = new PlaneComposite(new Jet("F-11: Boss"));
             
@@ -175,8 +173,9 @@ public class Game
                 for (PlaneComposite soldierCompanion : bossSoldier.getPlanes())
                     soldierCompanion.printModel();
             }
-            
             System.out.println();
+            /* End of composite */
+            
             /* Flyweight */
             System.out.println("Flyweight design pattern");
             PowerUpFactory powerupFactory = new PowerUpFactory();
@@ -227,5 +226,13 @@ public class Game
             System.out.println(level4.getName());
             System.out.println();
             /* End of Null object */
+            
+            
+            /* Visitor */
+            System.out.println("Visitor design pattern");
+            TowerParts tower = new Tower();
+            tower.accept(new TowerPartStatusVisitor());
+            System.out.println();
+            /* End of visitor */
         }	
 }
