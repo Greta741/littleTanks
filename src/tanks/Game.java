@@ -252,5 +252,16 @@ public class Game
             System.out.println("Current score: " + score.getState());
             System.out.println();
             /* End of memento */
+            
+            /* Mediator */
+            System.out.println("Mediator design pattern");
+            Player player1 = new Player();
+            Player player2 = new Player();
+            
+            player1.SetName("Robert");
+            player2.SetName("John");
+            player1.sendMessage("Hi! John!");
+            player2.sendMessage("Hello! Robert!");
+            /* ERnd of mediator */
         }	
 }
