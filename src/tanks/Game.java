@@ -22,7 +22,11 @@ public class Game
         
         private HealthInvoker healthInvoker;
         
-        public Game() {
+        private IInitSoldiersNamesService initGame;
+        
+        public Game(IInitSoldiersNamesService initGame) {
+            
+            this.initGame = initGame;
             
             /* Singleton */
             gameMap = MapSingleton.getInstance();
@@ -146,16 +150,16 @@ public class Game
             
             /* Composite */
             System.out.println("Composite design pattern");
-            PlaneComposite boss = new PlaneComposite(new Jet("F-11: Boss"));
+            PlaneComposite boss = new PlaneComposite(new Jet(initGame.getBossName()));
             
-            PlaneComposite bossSoldier1 = new PlaneComposite(new Jet("F-10: BossSoldier_1"));
-            PlaneComposite bossSoldier2 = new PlaneComposite(new Jet("F-9: BossSoldier_2"));
+            PlaneComposite bossSoldier1 = new PlaneComposite(new Jet(initGame.getBoosSoldierName()));
+            PlaneComposite bossSoldier2 = new PlaneComposite(new Jet(initGame.getBoosSoldierName()));
             
-            PlaneComposite soldier1Companion1 = new PlaneComposite(new Jet("F-8: Soldier_1_Companion_1"));
-            PlaneComposite soldier1Companion2 = new PlaneComposite(new Jet("F-7: Soldier_1_Companion_2"));
+            PlaneComposite soldier1Companion1 = new PlaneComposite(new Jet(initGame.getSoldierCompanionName(1)));
+            PlaneComposite soldier1Companion2 = new PlaneComposite(new Jet(initGame.getSoldierCompanionName(1)));
             
-            PlaneComposite soldier2Companion1 = new PlaneComposite(new Jet("F-6: Soldier_2_Companion_1"));
-            PlaneComposite soldier2Companion2 = new PlaneComposite(new Jet("F-5: Soldier_2_Companion_2"));
+            PlaneComposite soldier2Companion1 = new PlaneComposite(new Jet(initGame.getSoldierCompanionName(2)));
+            PlaneComposite soldier2Companion2 = new PlaneComposite(new Jet(initGame.getSoldierCompanionName(2)));
             
             boss.add(bossSoldier1);
             boss.add(bossSoldier2);
