@@ -202,18 +202,18 @@ public class Game
             System.out.println();
             /* End of proxy */
             
-            /* Iterpreter */
-            System.out.println("Interpreter design pattern");
-            Score sc = new Score();
-            System.out.println("Current score: " + sc.getState());
-            sc.setState(5);
-            System.out.println("Current score after 5: " + sc.getState());
-            sc.setState(-3);
-            System.out.println("Current score after -3: " + sc.getState());
+            /* Chain of responsibility */
+            System.out.println("Chain of responsibility design pattern");
+            AbstractLogger consoleLogger = new ConsoleLogger(AbstractLogger.CONSOLE);
+            AbstractLogger fileLogger = new FileLogger(AbstractLogger.FILE, "score.txt");
+            consoleLogger.setNextLogger(fileLogger);
+            consoleLogger.logScore(AbstractLogger.CONSOLE, "5");
+            consoleLogger.logScore(AbstractLogger.FILE, "7");
+            consoleLogger.logScore(AbstractLogger.CONSOLE, "10");
             System.out.println();
-            /* End of Interpreter */
+            /* End of chain of responsibility */
             
-            /* Null object */
+             /* Null object */
             System.out.println("Null object pattern");
             AbstractLevel level1 = LevelFactory.getLevel("medium");
             AbstractLevel level2 = LevelFactory.getLevel("insane");
@@ -226,6 +226,17 @@ public class Game
             System.out.println(level4.getName());
             System.out.println();
             /* End of Null object */
+            
+            /* Iterpreter */
+            System.out.println("Interpreter design pattern");
+            Score sc = new Score();
+            System.out.println("Current score: " + sc.getState());
+            sc.setState(5);
+            System.out.println("Current score after 5: " + sc.getState());
+            sc.setState(-3);
+            System.out.println("Current score after -3: " + sc.getState());
+            System.out.println();
+            /* End of Interpreter */
             
             
             /* Visitor */
@@ -262,6 +273,6 @@ public class Game
             player2.SetName("John");
             player1.sendMessage("Hi! John!");
             player2.sendMessage("Hello! Robert!");
-            /* ERnd of mediator */
+            /* End of mediator */
         }	
 }
